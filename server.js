@@ -16,7 +16,9 @@ app.get('/survey', function(req, res) {
   res.sendFile(__dirname + '/app/public/survey.html');
 });
 
-
+app.post('/server', function(req, res) {
+  console.log(req.body); 
+})
 
 
 app.listen(PORT, function() {
