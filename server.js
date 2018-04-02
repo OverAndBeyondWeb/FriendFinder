@@ -2,6 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var PORT = process.env.PORT || 3000;
 var app = express();
+var path = require('path');
+var fs = require('fs');
+var data = require('./app/data/friends');
 
 app.use(express.static('app/public'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -24,8 +27,7 @@ app.post('/server', function(req, res) {
 })
 
 app.get('/api/friends', function(req, res) {
-
-  res.json(members);
+  res.json(data);
 });
 
 
