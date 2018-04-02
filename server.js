@@ -5,10 +5,12 @@ var app = express();
 var path = require('path');
 var fs = require('fs');
 var data = require('./app/data/friends');
+var apiRoutes = require('./app/routing/apiRoutes');
 
 app.use(express.static('app/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
 
 var members = [];
 app.get('/', function(req, res) {
@@ -26,10 +28,7 @@ app.post('/server', function(req, res) {
   console.log(members); 
 })
 
-app.get('/api/friends', function(req, res) {
-  res.json(data);
-});
-
+apiRoutes(app, data);
 
 app.listen(PORT, function() {
   console.log('listening on port: ' + PORT)
