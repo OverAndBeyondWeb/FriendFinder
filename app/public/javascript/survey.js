@@ -12,6 +12,13 @@ $('button[type=submit]').click(function(e) {
     answers: $.makeArray( values )
   };
 
+  $('#name').val('');
+  $('#photo-link').val('');
+  $('.custom-select').each(function() {
+    $(this).val('Choose your answer');
+  });
+
+
   console.log(obj);
 
   $.post('/server', obj);

@@ -7,7 +7,7 @@ app.use(express.static('app/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-
+var members = [];
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/app/public/home.html');
 });
@@ -17,8 +17,16 @@ app.get('/survey', function(req, res) {
 });
 
 app.post('/server', function(req, res) {
-  console.log(req.body); 
+
+  members.push(req.body);
+
+  console.log(members); 
 })
+
+app.get('/api/friends', function(req, res) {
+
+  res.json(members);
+});
 
 
 app.listen(PORT, function() {
