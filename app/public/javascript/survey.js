@@ -9,7 +9,7 @@ $('button[type=submit]').click(function(e) {
   var obj = {
     name: name,
     photoLink: photoLink,
-    answers: $.makeArray( values )
+    scores: $.makeArray(values)
   };
 
   $('#name').val('');
@@ -21,7 +21,7 @@ $('button[type=submit]').click(function(e) {
 
   console.log(obj);
 
-  $.post('/server', obj);
+  $.post('/api/friends', obj);
 });
 
 

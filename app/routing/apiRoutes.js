@@ -1,4 +1,4 @@
-
+var friends = require('../data/friends.js');
 
 
 function runAPI(app, data) {
@@ -7,7 +7,7 @@ function runAPI(app, data) {
     res.json(data);
   })
   .post(function(req, res) {
-    res.json(data);
+    friends.push(req.body);
   });
 }
 
